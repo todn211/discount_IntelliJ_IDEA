@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<table>
+    create table goods_type(
+		ID integer primary key autoincrement,
+		PARENT_ID integer not null default 0,
+		NAME varchar(20) not null,
+		TYPE_CODE varchar(20),
+		KEY_WORD varchar(50),
+		IS_LEAF char(1),
+		IS_SHOW char(1)
+	)
+</table>

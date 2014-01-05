@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">货比三家</string>
+    <string name="myFocus">我的关注</string>
+    <string name="allGoodsType">全部商品类型</string>
+    <string name="systemSettings">系统设置</string>
+    <string name="imgContentDescript">图片说明</string>
+    <string name="add">添加</string>
+    <string name="refresh">刷新</string>
+    <string name="more">更多</string>
+    <string name="close">关闭</string>
+    <string name="exit">退出</string>
+    <string name="home">主页</string>
+    <string name="back">返回</string>
+    <string name="focus">关注</string>
+    <string name="success">成功</string>
+    <string name="failure">失败</string>
+    <string name="delete">删除</string>
+    <string name="settings">设置</string>
+    <string name="contactUs">联系我们</string>
+    <string name="about">关于</string>
+    <string name="enablePriceReducedNotify">开启降价通知</string>
+    <string name="search">搜索</string>
+    <string name="other">其它</string>
+    <string name="inputTheGoodsName">请输入商品名搜索</string>
+
+</resources>

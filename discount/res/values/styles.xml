@@ -1,0 +1,55 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="android:Theme.Light.NoTitleBar">
+        <item name="android:windowAnimationStyle">@style/noAnimation</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- 工具条圆角按钮 -->
+    <style name="cornersButton">
+        <item name="android:background">@drawable/corners_button_selector</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <!-- 圆角按钮橙色 -->
+    <style name="cornersButtonOrange">
+        <item name="android:background">@drawable/corners_button_orange_selector</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <!-- 我的关注项背景 -->
+    <style name="lvMyFocusChild">
+        <item name="android:background">@drawable/lv_my_focus_child_selector</item>
+    </style>
+    
+    <!-- 软件设置页面容器样式 -->
+    <style name="settings_container">
+        <item name="android:background">@drawable/settings_container</item>
+    </style>
+    
+    <!-- 软件设置项样式 -->
+    <style name="settings_item">
+        <item name="android:background">@drawable/settings_item_selector</item>
+    </style>
+    
+    <!-- 圆角输入框 -->
+    <style name="corners_input_widget">
+        <item name="android:background">@drawable/corners_input_widget</item>
+    </style>
+    
+    <style name="noAnimation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
+    </style>
+</resources>

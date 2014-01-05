@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".GoodsTypeActivity"
+    android:background="@drawable/goods_type_bg">
+
+    <!-- 工具条 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/toolbar_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/btLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/cornersButton"
+            android:drawableLeft="@drawable/back_icon"
+            android:drawablePadding="5dp"
+            android:text="@string/back"
+            android:onClick="back"/>
+        
+        <TextView 
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="100"
+            android:gravity="center_horizontal"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            />
+
+        <Button
+            android:id="@+id/btHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/cornersButton"
+            android:drawableLeft="@drawable/home_icon"
+            android:drawablePadding="5dp"
+            android:text="@string/home"
+            android:onClick="goToHome"/>
+    </LinearLayout>
+    
+    <ListView
+        android:id="@+id/lvGoodsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:cacheColorHint="#00000000"/>
+</LinearLayout>

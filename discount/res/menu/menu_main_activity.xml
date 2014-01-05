@@ -1,0 +1,42 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+   <!--  <item
+        android:id="@+id/addAttention"
+        android:orderInCategory="1"
+        android:showAsAction="always|withText"
+        android:icon="@drawable/guide_home_on"
+        android:title="@string/addAttention"/>
+    
+    <item 
+        android:id="@+id/menu_share"
+        android:title="分享"
+        android:showAsAction="ifRoom"
+        android:actionProviderClass="android.widget.ShareActionProvider" />
+    
+    <item
+        android:orderInCategory="2"
+        android:showAsAction="always"
+        android:icon="@drawable/guide_search_nm"
+        android:title="@string/addAttention">
+        <menu>
+            <item
+	        android:orderInCategory="1"
+	        android:showAsAction="ifRoom|withText"
+	        android:icon="@drawable/guide_search_nm"
+	        android:title="@string/addAttention"/>
+        
+	    <item
+	        android:orderInCategory="2"
+	        android:showAsAction="ifRoom|withText"
+	        android:icon="@drawable/guide_search_nm"
+	        android:title="@string/addAttention"/>
+	    
+	    <item
+	        android:orderInCategory="3"
+	        android:showAsAction="ifRoom|withText"
+	        android:icon="@drawable/guide_search_nm"
+	        android:title="@string/addAttention"/>            
+        </menu>
+        
+    </item>
+     -->
+</menu>

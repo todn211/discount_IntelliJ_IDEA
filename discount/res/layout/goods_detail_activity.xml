@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 商品详细页面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    tools:context=".GoodsDeailActivity">
+
+    <!-- 工具条 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/toolbar_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/cornersButton"
+            android:text="@string/back"
+            android:drawableLeft="@drawable/back_icon"
+            android:drawablePadding="5dp"
+            android:onClick="onBtBackClick"/>
+            
+        
+        <TextView 
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/myFocus"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_weight="100"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            />
+
+        <Button
+            android:id="@+id/btFocusGoods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/cornersButton"
+            android:drawableLeft="@drawable/add_icon"
+            android:drawablePadding="5dp"
+            android:text="@string/focus" 
+            android:onClick="onBtFocusGoodsClick"/>
+    </LinearLayout>
+    
+    <FrameLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/goodsDeailLayout">
+        
+       <WebView 
+			android:id="@+id/wvGoodsDetail"
+			android:layout_width="match_parent"
+        	android:layout_height="match_parent"/>
+       
+       <RelativeLayout
+			android:id="@+id/llShade"
+			android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:background="#99222222"
+        	android:gravity="center"
+        	>
+        	<ProgressBar
+        	    android:id="@+id/pbWebload" 
+        	    style="android:attr/progressBarStyleLarge"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    />
+       </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

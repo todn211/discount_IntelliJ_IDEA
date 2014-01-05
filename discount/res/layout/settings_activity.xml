@@ -1,0 +1,137 @@
+<!-- 软件设置页面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/goods_type_bg"
+    tools:context=".SettingsActivity">
+
+    <!-- 工具条 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/toolbar_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/cornersButton"
+            android:text="@string/back"
+            android:drawableLeft="@drawable/back_icon"
+            android:drawablePadding="5dp"
+            android:onClick="onBtBackClick"/>
+            
+        
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_weight="100"
+            android:gravity="center_horizontal"
+            />
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+    <!-- 主内容区域 -->
+    <RelativeLayout
+        style="@style/settings_container"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/tvPushInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:text="@string/enablePriceReducedNotify" />
+
+        <CheckBox
+            android:id="@+id/cbPushInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+   		android:layout_height="103dp"
+   		android:orientation="vertical"
+   		android:layout_margin="10dp"
+   		android:padding="1dp"
+   		style="@style/settings_container">
+       	
+        <RelativeLayout
+       	    android:layout_width="match_parent"
+   			android:layout_height="50dp"
+   			android:gravity="center_vertical"
+   			style="@style/settings_item"
+	   		android:clickable="true">
+       	    
+       	    <TextView
+       	        android:id="@+id/tvContactUs"
+	            android:layout_width="wrap_content"
+	   			android:layout_height="wrap_content"
+	   			android:paddingLeft="10dp"
+	   			android:textStyle="bold"
+	            android:text="@string/contactUs"/>
+       	    
+       	    <ImageView 
+       	        android:layout_width="wrap_content"
+       	        android:layout_height="wrap_content"
+       	        android:src="@drawable/arrow_right"
+       	        android:layout_alignParentTop="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="10dp"
+	            android:contentDescription="@string/imgContentDescript"/>
+       	</RelativeLayout>
+        
+        <View 
+            android:layout_width="match_parent"
+   			android:layout_height="1dp"
+   			android:background="#eeffee"/>
+        
+       	<RelativeLayout
+       	    android:layout_width="match_parent"
+   			android:layout_height="50dp"
+   			android:gravity="center_vertical"
+   			style="@style/settings_item"
+	   		android:clickable="true">
+       	    
+       	    <TextView
+       	        android:id="@+id/tvAbout"
+	            android:layout_width="wrap_content"
+	   			android:layout_height="wrap_content"
+	   			android:paddingLeft="10dp"
+	   			android:textStyle="bold"
+	            android:text="@string/about"/>
+       	    
+       	    <ImageView 
+       	        android:layout_width="wrap_content"
+       	        android:layout_height="wrap_content"
+       	        android:src="@drawable/arrow_right"
+       	        android:layout_alignParentTop="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="10dp"
+	            android:contentDescription="@string/imgContentDescript"/>
+       	</RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

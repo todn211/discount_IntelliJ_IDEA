@@ -1,0 +1,102 @@
+<!-- 全软件主页 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- 工具条 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/toolbar_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+		
+        <LinearLayout
+            android:id="@+id/toolbarContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            
+	        <Button
+	            android:id="@+id/btRefresh"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            style="@style/cornersButton"
+	            android:text="@string/refresh"
+	            android:drawableLeft="@drawable/refresh_icon"
+	            android:drawablePadding="5dp"
+	            android:onClick="onBtRefreshClick"/>
+	            
+	        
+	        <TextView 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:text="@string/myFocus"
+	            android:textColor="#FFFFFF"
+	            android:textStyle="bold"
+	            android:textSize="16sp"
+	            android:layout_weight="100"
+	            android:gravity="center_horizontal"
+	            />
+	
+	        <Button
+	            android:id="@+id/btMore"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            style="@style/cornersButton"
+	            android:drawableLeft="@drawable/more_icon"
+	            android:drawablePadding="5dp"
+	            android:text="@string/other" 
+	            android:onClick="onMoreClick"/>
+        </LinearLayout>
+        
+        <LinearLayout
+        	android:id="@+id/searchContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+            
+            <EditText 
+                android:id="@+id/etSearch"
+	            android:layout_width="0dp"
+	            android:layout_height="35dp"
+	            android:drawableLeft="@drawable/search_24_icon"
+	            android:drawablePadding="5dp"
+	            android:paddingLeft="5dp"
+	            android:layout_weight="100"
+	            android:hint="@string/inputTheGoodsName"
+	            style="@style/corners_input_widget"
+	            android:layout_marginRight="5dp"/>
+            
+            <Button 
+                android:id="@+id/btSearchOrBack"
+                android:layout_width="wrap_content"
+	            android:layout_height="39dp"
+	            style="@style/cornersButton"
+	            android:drawableLeft="@drawable/back_icon"
+	            android:drawablePadding="3dp"
+	            android:text="@string/back"
+	            android:tag="@string/back"
+	            android:onClick="onSearchOrBackClick"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- 主内容区域 -->
+    <com.zixingchen.discount.widgetex.ExpandableListViewSuper.ExpandableListViewSuper 
+        android:id="@+id/lvMyFocus"
+        android:divider="#CBCBCB"
+        android:dividerHeight="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:groupIndicator="@drawable/lv_group_arrow"
+        android:indicatorLeft="0dp"
+        android:background="@drawable/main_bg"
+        android:cacheColorHint="#00000000"
+        />
+</LinearLayout>

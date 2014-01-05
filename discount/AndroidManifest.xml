@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zixingchen.discount"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.zixingchen.discount.utils.ContextUtil"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- 主页面 -->
+        <activity
+            android:name="com.zixingchen.discount.activity.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 商品类型展示页面 -->
+        <activity  android:name="com.zixingchen.discount.activity.GoodsTypeActivity"/>
+
+        <!-- 商品列表展示页面 -->
+        <activity android:name="com.zixingchen.discount.activity.GoodsListActivity"/>
+
+        <!-- 商品详细信息展示页面 -->
+        <activity android:name="com.zixingchen.discount.activity.GoodsDeailActivity"/>
+        
+        <!-- 软件设置页面 -->
+        <activity android:name="com.zixingchen.discount.activity.SettingsActivity"/>
+    </application>
+
+</manifest>

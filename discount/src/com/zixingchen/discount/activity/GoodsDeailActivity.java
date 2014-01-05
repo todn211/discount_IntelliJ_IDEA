@@ -24,7 +24,7 @@ import com.zixingchen.discount.model.Goods;
 import com.zixingchen.discount.model.GoodsType;
 
 /**
- * 商品详细信息展示页面 
+ * 商品详细信息展示页面
  * @author 陈梓星
  */
 public class GoodsDeailActivity extends Activity {
@@ -47,10 +47,11 @@ public class GoodsDeailActivity extends Activity {
 		
 		//初始化商品类型对象
 		goodsType = (GoodsType) intent.getSerializableExtra("goodsType");
+        System.out.println("&&&");
 		
 		//获取商品对象
 		goods = (Goods) intent.getSerializableExtra("GoodsItem");
-		
+
 		//初始工具栏
 		initToolbar();
 		

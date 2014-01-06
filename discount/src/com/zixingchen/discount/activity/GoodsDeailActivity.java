@@ -40,15 +40,15 @@ public class GoodsDeailActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.goods_detail_activity);
-		
+
 		prevActivityIsMain = this.getIntent().getBooleanExtra("prevActivityIsMain", false);
-		
+
 		Intent intent = this.getIntent();
-		
+
 		//初始化商品类型对象
 		goodsType = (GoodsType) intent.getSerializableExtra("goodsType");
         System.out.println("&&&");
-		
+
 		//获取商品对象
 		goods = (Goods) intent.getSerializableExtra("GoodsItem");
 

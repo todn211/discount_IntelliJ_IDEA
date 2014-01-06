@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  商品关注列表（主页）子项 -->
-<com.zixingchen.discount.widgetex.ExpandableListViewSuper.MyFocusGoodsItemLoyout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="106dp"
-    android:background="#40F0F0F0">
+<com.zixingchen.discount.widgetex.ExpandableListViewSuper.MyFocusGoodsItemLoyout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:background="#40F0F0F0">
 
     <LinearLayout
-        android:layout_width="match_parent"
-    	android:layout_height="match_parent"
-    	android:orientation="vertical"
-    	android:background="#8E8E8E"
-    	android:gravity="right|center_vertical">
-    	
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#8E8E8E"
+            android:gravity="right|center_vertical">
+
         <!--  
         <Button 
             android:id="@+id/btDelete"
@@ -22,63 +23,63 @@
             android:text="@string/delete"
             android:textSize="20sp"
             android:onClick="deleteItem"/>-->
-            
+
         <ImageButton
-            android:id="@+id/btDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            style="@style/cornersButtonOrange" 
-            android:src="@drawable/trash_icon"
-            android:contentDescription="@string/imgContentDescript"/>
+                android:id="@+id/btDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/cornersButtonOrange"
+                android:src="@drawable/trash_icon"
+                android:contentDescription="@string/imgContentDescript"/>
     </LinearLayout>
-    
+
     <LinearLayout
-        android:layout_width="match_parent"
-    	android:layout_height="match_parent"
-    	android:orientation="horizontal"
-    	android:gravity="center_vertical"
-    	style="@style/lvMyFocusChild"
-    	android:padding="3dp">
-        
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            style="@style/lvMyFocusChild"
+            android:padding="3dp">
+
         <ImageView
-	        android:id="@+id/ivIcon"
-	        android:layout_width="100dp"
-	        android:layout_height="100dp"
-	        android:contentDescription="@string/imgContentDescript"
-	        android:src="@drawable/ic_launcher" />
-	
-	    <LinearLayout
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:orientation="vertical"
-	        android:layout_marginLeft="3dp"
-	        android:layout_marginRight="3dp">
-	
-	        <TextView
-	            android:id="@+id/tvName"
-	            android:layout_width="match_parent"
-	            android:layout_height="33dp"
-	            android:textSize="14sp"
-	            android:gravity="center_vertical"
-	            android:ellipsize="end"
-	        	android:maxLines="2"/>
-	
-	        <TextView
-	            android:id="@+id/tvPrePrice"
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:layout_marginTop="10dp"
-	            android:drawableEnd="@drawable/mark_up_icon"
-	            android:drawablePadding="10dp"
-	            android:gravity="center_vertical"/>
-	
-	        <TextView
-	            android:id="@+id/tvCurrentPrice"
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:layout_marginTop="5dp"
-	            android:textColor="#A0522D"/>
-	    </LinearLayout>
-        
+                android:id="@+id/ivIcon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/imgContentDescript"
+                android:src="@drawable/ic_launcher"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp">
+
+            <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:textSize="14sp"
+                    android:gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:maxLines="2"/>
+
+            <TextView
+                    android:id="@+id/tvPrePrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableEnd="@drawable/mark_up_icon"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"/>
+
+            <TextView
+                    android:id="@+id/tvCurrentPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#A0522D"/>
+        </LinearLayout>
+
     </LinearLayout>
 </com.zixingchen.discount.widgetex.ExpandableListViewSuper.MyFocusGoodsItemLoyout>

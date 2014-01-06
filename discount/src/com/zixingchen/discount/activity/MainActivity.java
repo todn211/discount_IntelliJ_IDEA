@@ -461,7 +461,7 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 			myFocusGoodsItemLoyout.setGroupPosition(groupPosition);
 			myFocusGoodsItemLoyout.setChildPosition(childPosition);
 			myFocusGoodsItemLoyout.resetViewPosition();
-			
+
 			Goods goods = goodsTypes.get(groupPosition).getGoodses().get(childPosition);
 			
 			TextView tvName = (TextView) convertView.findViewById(R.id.tvName);

@@ -98,7 +98,6 @@ public class GoodsBusiness {
 	 * 根据商品类型获取相应的商品列表
 	 * @param goodsType 商品类型
 	 * @param page 分页对象
-	 * @param handler 消息分配器，负责把查询出来的结果返回给调用者
 	 * @throws Exception
 	 */
 	public void loadGoodsByGoodsType(final GoodsType goodsType,final Page<Goods> page,final LvGoodsListAdapter adapter){
@@ -206,6 +205,15 @@ public class GoodsBusiness {
 								Goods newGoods = new Goods(goods.getId());
 								newGoods.setCurrentPrice(price);
 								goodsDao.updateFocusGoodsPrice(newGoods);
+
+                                //设置当前是商品升降价属性
+                                if (goods.getPrePrice().floatValue() < price){
+                                    goods.setPriceState(Goods.PriceState.UP);
+                                }else if (goods.getPrePrice().floatValue() > price){
+                                    goods.setPriceState(Goods.PriceState.DOWN);
+                                }else {
+                                    goods.setPriceState(Goods.PriceState.EQUATION);
+                                }
 							}
 						}
 						

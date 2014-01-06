@@ -130,6 +130,8 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 			Editor editor = sp.edit();
 			editor.putBoolean(Contexts.HAS_ADD_FOCUS_GOODS,false);
 			editor.commit();
+
+            //同步测试的
 		}
 	}
 	

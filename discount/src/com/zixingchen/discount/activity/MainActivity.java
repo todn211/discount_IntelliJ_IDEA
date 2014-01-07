@@ -82,6 +82,8 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 		
 		//初始化搜索框
 		this.initEtSearch();
+		
+		//这里是测试同步信息的
 	}
 	
 	/**

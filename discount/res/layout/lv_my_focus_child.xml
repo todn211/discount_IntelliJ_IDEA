@@ -69,8 +69,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:drawableEnd="@drawable/mark_up_icon"
-                    android:drawablePadding="10dp"
                     android:gravity="center_vertical"/>
 
             <TextView
@@ -78,7 +76,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:textColor="#A0522D"/>
+                    android:textColor="#A0522D"
+                    android:drawablePadding="10dp"/>
         </LinearLayout>
 
     </LinearLayout>

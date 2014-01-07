@@ -1,26 +1,17 @@
 package com.zixingchen.discount.business;
 
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.zixingchen.discount.R;
 import com.zixingchen.discount.activity.GoodsListActivity.LvGoodsListAdapter;
 import com.zixingchen.discount.common.Page;
 import com.zixingchen.discount.dao.GoodsDao;
@@ -28,6 +19,15 @@ import com.zixingchen.discount.model.Goods;
 import com.zixingchen.discount.model.GoodsType;
 import com.zixingchen.discount.utils.ContextUtil;
 import com.zixingchen.discount.utils.TaobaoUtil;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 商品逻辑处理类
@@ -183,38 +183,43 @@ public class GoodsBusiness {
 						public void onSuccess(String response) {
 							String str = "<strong class=\"oran\">";
 							String priceStr = response.substring(response.indexOf(str)+str.length(), response.indexOf("</strong>"));
-							Map<String,Object> params = new HashMap<String, Object>();
-							params.put("price", priceStr);
-							params.put("textView", textView);
-							params.put("goods", goods);
-							Message msg = Message.obtain();
-							msg.obj = params;
-							msg.what = INIT_PRICE;
-							handler.sendMessage(msg);
-							
+
 							//如果当前价格和数据表的不一至，就把当前价格更新到数据表中，作为下一次是否降价的参考
-							float price = 0;
-							if(priceStr.indexOf("-") != -1){
+							Float price = null;
+							if(priceStr.contains("-")){
 								String[] priceStrs = priceStr.split("-");
 								price = Float.parseFloat(priceStrs[0].trim());
 							}else{
 								price = Float.parseFloat(priceStr.trim());
 							}
 							
-							if(goods.getPrePrice().floatValue() != price){
+							if(goods.getPrePrice().floatValue() != price.floatValue()){
 								Goods newGoods = new Goods(goods.getId());
 								newGoods.setCurrentPrice(price);
+                                //把当前的值作为下一次的参考值
 								goodsDao.updateFocusGoodsPrice(newGoods);
 
                                 //设置当前是商品升降价属性
-                                if (goods.getPrePrice().floatValue() < price){
+                                if (goods.getPrePrice().floatValue() < price.floatValue()){
                                     goods.setPriceState(Goods.PriceState.UP);
-                                }else if (goods.getPrePrice().floatValue() > price){
+                                }else if (goods.getPrePrice().floatValue() > price.floatValue()){
                                     goods.setPriceState(Goods.PriceState.DOWN);
-                                }else {
-                                    goods.setPriceState(Goods.PriceState.EQUATION);
                                 }
-							}
+							}else {
+                                goods.setPriceState(Goods.PriceState.EQUATION);
+                            }
+
+                            goods.setCurrentPrice(price);
+
+                            //发布价格修改消息
+                            Map<String,Object> params = new HashMap<String, Object>();
+//                            params.put("price", price);
+                            params.put("textView", textView);
+                            params.put("goods", goods);
+                            Message msg = Message.obtain();
+                            msg.obj = params;
+                            msg.what = INIT_PRICE;
+                            handler.sendMessage(msg);
 						}
 						
 						@Override
@@ -281,9 +286,19 @@ public class GoodsBusiness {
 					Map<String,Object> priceParams = (Map<String, Object>) msg.obj;
 					Goods goods = (Goods) priceParams.get("goods");
 					TextView textView = (TextView) priceParams.get("textView");
-					String price = "当前价格：" + priceParams.get("price");
+					String price = "当前价格：" + goods.getCurrentPrice().toString();
 					textView.setText(price);
-					goods.setPriceCache(price);
+
+                    //设置价格图标，是升还是降
+                    Drawable drawable = null;
+                    if (goods.getPriceState() == Goods.PriceState.DOWN){
+                        drawable = ContextUtil.getInstance().getResources().getDrawable(R.drawable.mark_down_icon);
+                        textView.setCompoundDrawablesWithIntrinsicBounds(null,null,drawable,null);
+                    }else if (goods.getPriceState() == Goods.PriceState.UP){
+                        drawable = ContextUtil.getInstance().getResources().getDrawable(R.drawable.mark_up_icon);
+                        textView.setCompoundDrawablesWithIntrinsicBounds(null,null,drawable,null);
+                    }
+                    goods.setPriceStateIcon(drawable);
 					break;
 				
 				//添加商品列表到前台展示

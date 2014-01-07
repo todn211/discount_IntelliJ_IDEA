@@ -93,8 +93,6 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 	protected void onStart() {
 		super.onStart();
 
-        Log.i("MainActivity","***********");
-
 		//我的关注列表数据是否有更改
 		SharedPreferences sp = this.getSharedPreferences(Contexts.SYSTEM_CACHE, MODE_PRIVATE);
 		if(sp.getBoolean(Contexts.HAS_ADD_FOCUS_GOODS, false)){
@@ -474,11 +472,12 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 			
 			//加载当前价格
 			TextView tvCurrentPrice = (TextView) convertView.findViewById(R.id.tvCurrentPrice);
-			if(TextUtils.isEmpty(goods.getPriceCache())){
+			if(goods.getCurrentPrice() == null){
 				goodsBusiness.loadGoodsPrice(goods, tvCurrentPrice);
 			}else{
-				tvCurrentPrice.setText(goods.getPriceCache());
-			}
+				tvCurrentPrice.setText("当前价格：" + goods.getCurrentPrice().toString());
+                tvCurrentPrice.setCompoundDrawablesWithIntrinsicBounds(null,null,goods.getPriceStateIcon(),null);
+            }
 			
 			//加载当前图标
 			ImageView ivIcon = (ImageView) convertView.findViewById(R.id.ivIcon);

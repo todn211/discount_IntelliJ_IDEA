@@ -24,5 +24,6 @@
     <string name="search">搜索</string>
     <string name="other">其它</string>
     <string name="inputTheGoodsName">请输入商品名搜索</string>
+    <string name="aboutDescript">　　货比三家的软件可以制作完成，需要感谢帮助过开发这个软件的朋友，特别是梁能奇、陈梓新、陈欢的技术指导和需求的整理，在这表示感谢。</string>
 
 </resources>

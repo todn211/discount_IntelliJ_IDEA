@@ -40,6 +40,12 @@
         
         <!-- 软件设置页面 -->
         <activity android:name="com.zixingchen.discount.activity.SettingsActivity"/>
+
+        <!-- 关于页面 -->
+        <activity android:name="com.zixingchen.discount.activity.AboutActivity"/>
+
+        <!-- 联系我们页面 -->
+        <activity android:name=".activity.ContactUsActivity" />
     </application>
 
 </manifest>

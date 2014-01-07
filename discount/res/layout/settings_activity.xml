@@ -84,7 +84,8 @@
    			android:layout_height="50dp"
    			android:gravity="center_vertical"
    			style="@style/settings_item"
-	   		android:clickable="true">
+	   		android:clickable="true"
+            android:onClick="showContactUsActivity">
        	    
        	    <TextView
        	        android:id="@+id/tvContactUs"
@@ -114,7 +115,8 @@
    			android:layout_height="50dp"
    			android:gravity="center_vertical"
    			style="@style/settings_item"
-	   		android:clickable="true">
+	   		android:clickable="true"
+            android:onClick="showAboutActivity">
        	    
        	    <TextView
        	        android:id="@+id/tvAbout"

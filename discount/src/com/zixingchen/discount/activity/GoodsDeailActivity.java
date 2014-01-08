@@ -2,6 +2,7 @@ package com.zixingchen.discount.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
@@ -32,9 +35,9 @@ public class GoodsDeailActivity extends Activity {
 	private WebView wvGoodsDetail;//显示商品详细信息的容器
 	private Goods goods;//当前商品对象
 	private GoodsType goodsType;//所属商品类型对象
-	private RelativeLayout llShade;//遮罩层
 	private boolean prevActivityIsMain;//上一个Activity是否为MainActivity，true时为是。
 	private GoodsBusiness bussiness = new GoodsBusiness();
+    private ProgressDialog progressDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,6 @@ public class GoodsDeailActivity extends Activity {
 
 		//初始化商品类型对象
 		goodsType = (GoodsType) intent.getSerializableExtra("goodsType");
-        System.out.println("&&&");
 
 		//获取商品对象
 		goods = (Goods) intent.getSerializableExtra("GoodsItem");
@@ -55,18 +57,16 @@ public class GoodsDeailActivity extends Activity {
 		//初始工具栏
 		initToolbar();
 		
-		//阻止遮罩层事件往下传递
-		llShade = (RelativeLayout) this.findViewById(R.id.llShade);
-		llShade.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				return true;
-			}
-		});
-		
 		//初始化商品内容容器
 		initWvGoodsDetail();
-	}
+
+        //初始化进度条
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMax(100);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+    }
 	
 	/**
 	 * 初始工具栏
@@ -97,25 +97,30 @@ public class GoodsDeailActivity extends Activity {
 				view.loadUrl(url);
 				return true;
 			}
-			
-			/**
-			 * 页面加载完成时删除遮罩层
-			 */
-			@Override
-			public void onPageFinished(WebView view, String url) {
-				super.onPageFinished(view, url);
-				FrameLayout goodsDeailLayout = (FrameLayout)GoodsDeailActivity.this.findViewById(R.id.goodsDeailLayout);
-				goodsDeailLayout.removeView(llShade);
-			}
-			
-			@Override
+
+            @Override
 			public void onReceivedError(WebView view, int errorCode,
 					String description, String failingUrl) {
 				super.onReceivedError(view, errorCode, description, failingUrl);
 				Toast.makeText(GoodsDeailActivity.this, "加载页面失败！", Toast.LENGTH_LONG).show();
 			}
 		});
-		
+
+        wvGoodsDetail.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+
+                //更新进度条的值
+                progressDialog.setProgress(newProgress);
+
+                //页面加载完成时关闭进度条
+                if(newProgress == 100){
+                    progressDialog.dismiss();
+                }
+            }
+        });
+
 		wvGoodsDetail.loadUrl(goods.getHref());
 	}
 	

@@ -213,7 +213,6 @@ public class GoodsBusiness {
 
                             //发布价格修改消息
                             Map<String,Object> params = new HashMap<String, Object>();
-//                            params.put("price", price);
                             params.put("textView", textView);
                             params.put("goods", goods);
                             Message msg = Message.obtain();
@@ -292,10 +291,10 @@ public class GoodsBusiness {
                     //设置价格图标，是升还是降
                     Drawable drawable = null;
                     if (goods.getPriceState() == Goods.PriceState.DOWN){
-                        drawable = ContextUtil.getInstance().getResources().getDrawable(R.drawable.mark_down_icon);
+                        drawable = ContextUtil.getInstance().getResources().getDrawable(R.drawable.mark_down_icon1);
                         textView.setCompoundDrawablesWithIntrinsicBounds(null,null,drawable,null);
                     }else if (goods.getPriceState() == Goods.PriceState.UP){
-                        drawable = ContextUtil.getInstance().getResources().getDrawable(R.drawable.mark_up_icon);
+                        drawable = ContextUtil.getInstance().getResources().getDrawable(R.drawable.mark_up_icon1);
                         textView.setCompoundDrawablesWithIntrinsicBounds(null,null,drawable,null);
                     }
                     goods.setPriceStateIcon(drawable);

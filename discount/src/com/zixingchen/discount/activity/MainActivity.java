@@ -1,22 +1,15 @@
 package com.zixingchen.discount.activity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.Drawable;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +24,7 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +40,11 @@ import com.zixingchen.discount.widgetex.ExpandableListViewSuper.ExpandableListVi
 import com.zixingchen.discount.widgetex.ExpandableListViewSuper.MyFocusGoodsItemLoyout;
 import com.zixingchen.discount.widgetex.ExpandableListViewSuper.OnChildOperationListener;
 import com.zixingchen.discount.widgetex.PopupWindowSuper.PopupMenuWindow;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 主页
@@ -212,12 +211,11 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 		//获取弹出窗口的坐标
 		int[] point = new int[2];
 		view.getLocationOnScreen(point);
-		int x = point[0] + view.getWidth() / 2;
+		int x = -(point[0] + view.getWidth() / 2);
 		int y = point[1] + view.getHeight();
-		
-		
-		popupMenuWindow.showAtLocation(findViewById(android.R.id.content) , Gravity.LEFT | Gravity.TOP, x, y);
-	}
+
+		popupMenuWindow.showAtLocation(findViewById(android.R.id.content) , Gravity.RIGHT | Gravity.TOP, x, y);
+    }
 	
 	/**
 	 * 初始化更多菜单窗口
@@ -239,7 +237,7 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 		Map<String, Object> exitMenuItem = new HashMap<String, Object>();
 		exitMenuItem.put("icon", Integer.valueOf(R.drawable.exit_icon));
 		exitMenuItem.put("title", MainActivity.this.getResources().getString(R.string.exit));
-		
+
 		menuItems.add(addMenuItem);
 		menuItems.add(searchMenuItem);
 		menuItems.add(settingsMenuItem);

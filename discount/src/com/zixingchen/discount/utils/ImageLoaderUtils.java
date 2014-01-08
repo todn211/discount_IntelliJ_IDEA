@@ -20,9 +20,9 @@ public class ImageLoaderUtils {
 	static{
 		if(imageLoader == null){
 			DisplayImageOptions options = new DisplayImageOptions.Builder()
-										        .showImageOnLoading(R.drawable.ic_launcher)
-										        .showImageForEmptyUri(R.drawable.ic_launcher)
-										        .showImageOnFail(R.drawable.ic_launcher)
+										        .showImageOnLoading(R.drawable.launcher_icon)
+										        .showImageForEmptyUri(R.drawable.launcher_icon)
+										        .showImageOnFail(R.drawable.launcher_icon)
 										        .cacheInMemory(true)
 										        .cacheOnDisc(true)
 										        .imageScaleType(ImageScaleType.EXACTLY_STRETCHED)//图片缩放方式

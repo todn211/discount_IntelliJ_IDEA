@@ -39,7 +39,10 @@ public class PopupMenuWindow extends PopupWindow {
 		this.setContentView(contentView);
 		this.setBackgroundDrawable(new BitmapDrawable());
 		this.setFocusable(true);
-		this.setWindowLayoutMode(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        this.setAnimationStyle(android.R.style.Animation_InputMethod);
+//		this.setWindowLayoutMode(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);//2.3没有效果
+        this.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 	}
 	
 	/**
@@ -69,7 +72,7 @@ public class PopupMenuWindow extends PopupWindow {
 		menus.setLayoutParams(params);
 		menus.setAdapter(adapter);
 		menus.setDivider(new ColorDrawable(Color.GRAY));
-		menus.setDividerHeight((int)PxAndDpUtil.dip2px(context, 1f));
+		menus.setDividerHeight(1);
 		return menus;
 	}
 

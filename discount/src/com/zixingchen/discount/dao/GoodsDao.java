@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
@@ -23,6 +24,10 @@ private DBHelp dbHelp;
 	public GoodsDao() {
 		this.dbHelp = new DBHelp(ContextUtil.getInstance(), DBHelp.VERSION);
 	}
+
+    public GoodsDao(Context context) {
+        this.dbHelp = new DBHelp(context, DBHelp.VERSION);
+    }
 	
 	/**
 	 * 添加关注关注商品

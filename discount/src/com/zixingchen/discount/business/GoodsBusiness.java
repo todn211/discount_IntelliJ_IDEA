@@ -1,6 +1,7 @@
 package com.zixingchen.discount.business;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
@@ -56,12 +57,14 @@ public class GoodsBusiness {
 	
 	private GoodsDao goodsDao;
 	private static GoodsHandler handler = new GoodsHandler();
-	
-	
-	
+
 	public GoodsBusiness() {
 		goodsDao = new GoodsDao();
 	}
+
+    public GoodsBusiness(Context context) {
+        goodsDao = new GoodsDao(context);
+    }
 	
 	/**
 	 * 添加关注关注商品

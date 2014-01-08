@@ -3,6 +3,7 @@ package com.zixingchen.discount.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
@@ -21,6 +22,10 @@ public class GoodsTypeDao {
 	public GoodsTypeDao() {
 		this.dbHelp = new DBHelp(ContextUtil.getInstance(), DBHelp.VERSION);
 	}
+
+    public GoodsTypeDao(Context context) {
+        this.dbHelp = new DBHelp(context, DBHelp.VERSION);
+    }
 	
 	/**
 	 * 查询已关注的商品类别

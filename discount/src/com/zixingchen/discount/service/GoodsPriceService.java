@@ -5,16 +5,19 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
+import com.zixingchen.discount.business.GoodsBusiness;
+
 /**
  * 后台更新关注商品的价格
  * Created by 陈梓星
  */
 public class GoodsPriceService extends Service {
+    private GoodsBusiness goodsBusiness;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        goodsBusiness = new GoodsBusiness(this);
         this.updateFocusGoodsPrice();
     }
 
@@ -42,7 +45,14 @@ public class GoodsPriceService extends Service {
             public void run() {
                 while (true){
                     try {
-                        Thread.sleep(1000);
+                        //两个小时请求一次
+                        Thread.sleep(1000*60*60*2);
+
+                        //加载商品关注列表
+
+                        //从列表中加载每个商品的价格
+
+                        //如果价格有变动就通知用户
                     } catch (InterruptedException e) {
                         GoodsPriceService.this.stopSelf();
                     }

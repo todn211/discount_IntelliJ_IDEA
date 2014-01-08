@@ -17,6 +17,10 @@ public class GoodsTypeBusiness {
 	public GoodsTypeBusiness() {
 		this.dao = new GoodsTypeDao();
 	}
+
+    public GoodsTypeBusiness(Context context) {
+        this.dao = new GoodsTypeDao(context);
+    }
 	
 	/**
 	 * 查询已关注的商品类别
@@ -28,7 +32,6 @@ public class GoodsTypeBusiness {
 	
 	/**
 	 * 查询商品类别
-	 * @param filter 要过滤的条件
 	 * @return 商品添加集合
 	 */
 	public List<GoodsType> findGoodsTypes(GoodsType goodsType){
@@ -37,7 +40,7 @@ public class GoodsTypeBusiness {
 	
 	/**
 	 * 根据父ID查找商品类别集合
-	 * @param 商品类别父ID
+	 * @param parentId 商品类别父ID
 	 * @return 商品类别集合
 	 */
 	public List<GoodsType> findGoodsTypesByParentId(Long parentId){

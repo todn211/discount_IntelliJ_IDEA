@@ -6,6 +6,10 @@ import android.os.Binder;
 import android.os.IBinder;
 
 import com.zixingchen.discount.business.GoodsBusiness;
+import com.zixingchen.discount.model.Goods;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 后台更新关注商品的价格
@@ -13,11 +17,12 @@ import com.zixingchen.discount.business.GoodsBusiness;
  */
 public class GoodsPriceService extends Service {
     private GoodsBusiness goodsBusiness;
-
+    private List<Goods> goodses;//关注的商品集合
     @Override
     public void onCreate() {
         super.onCreate();
         goodsBusiness = new GoodsBusiness(this);
+        goodses = new ArrayList<Goods>();
         this.updateFocusGoodsPrice();
     }
 
@@ -49,6 +54,8 @@ public class GoodsPriceService extends Service {
                         Thread.sleep(1000*60*60*2);
 
                         //加载商品关注列表
+                        goodses.clear();
+                        goodses.addAll(goodsBusiness.findFocusGoods(null));
 
                         //从列表中加载每个商品的价格
 

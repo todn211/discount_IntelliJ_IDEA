@@ -129,21 +129,23 @@ private DBHelp dbHelp;
 			StringBuilder sql = new StringBuilder("select * from focus_goods where 1=1 ");
 			
 			List<String> params = new ArrayList<String>();
-			if(filter.getId() != null){
-				sql.append("and ID=? ");
-				params.add(filter.getId().toString());
-			}
-			
-			if(filter.getGoodsTypeId() != null){
-				sql.append("and GOODS_TYPE_ID=? ");
-				params.add(filter.getGoodsTypeId().toString());
-			}
-			
-			if(!TextUtils.isEmpty(filter.getName())){
-				sql.append("and NAME=? ");
-				params.add(filter.getName());
-			}
-			
+
+            if (filter != null){
+                if(filter.getId() != null){
+                    sql.append("and ID=? ");
+                    params.add(filter.getId().toString());
+                }
+
+                if(filter.getGoodsTypeId() != null){
+                    sql.append("and GOODS_TYPE_ID=? ");
+                    params.add(filter.getGoodsTypeId().toString());
+                }
+
+                if(!TextUtils.isEmpty(filter.getName())){
+                    sql.append("and NAME=? ");
+                    params.add(filter.getName());
+                }
+            }
 			cursor = db.rawQuery(sql.toString(), params.toArray(new String[params.size()]));
 			while(cursor.moveToNext()){
 				Goods goods = new Goods();

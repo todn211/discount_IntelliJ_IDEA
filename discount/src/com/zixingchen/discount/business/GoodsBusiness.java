@@ -237,6 +237,15 @@ public class GoodsBusiness {
 			};
 		}.start();
 	}
+
+    /**
+     * 搜索关注的商品对象
+     * @param filter 过滤条件(可过滤的属性：name、id、goodsTypeId)
+     * @return 商品对象集合
+     */
+    public List<Goods> findFocusGoods(Goods filter){
+        return goodsDao.findFocusGoods(filter);
+    }
 	
 	/**
 	 * 创建参数对象

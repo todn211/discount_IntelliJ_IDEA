@@ -81,7 +81,7 @@
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            style="@style/corners_input_widget"
+            style="@style/settings_container"
             android:text="QQ：52963645\nQQ：2099206\nQQ：26804153\nQQ：315544688\nE-Mail:52963645@qq.com" />
     </LinearLayout>
 

@@ -80,7 +80,7 @@
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            style="@style/corners_input_widget"
+            style="@style/settings_container"
             android:text="@string/aboutDescript" />
     </LinearLayout>
 

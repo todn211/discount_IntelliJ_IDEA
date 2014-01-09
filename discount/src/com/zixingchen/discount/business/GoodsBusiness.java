@@ -30,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -335,7 +336,12 @@ public class GoodsBusiness {
 			goods.setId(Long.parseLong(goodsItem.getString("itemId")));
 			goods.setGoodsTypeId(goodsTypeId);
 			goods.setName(goodsItem.getString("tip"));
-			goods.setCurrentPrice(Float.parseFloat(goodsItem.getString("currentPrice")));
+
+            //只保留一位小数
+            String currentPriceStr = goodsItem.getString("currentPrice");
+            currentPriceStr = currentPriceStr.substring(0,currentPriceStr.indexOf(".")+2);
+			goods.setCurrentPrice(Float.parseFloat(currentPriceStr));
+
 			goods.setPrePrice(goods.getCurrentPrice());
 			goods.setIcon(goodsItem.getString("image") + "_sum.jpg");
 			goods.setHref(goodsItem.getString("href"));

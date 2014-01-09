@@ -1,6 +1,8 @@
 package com.zixingchen.discount.service;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
@@ -51,15 +53,16 @@ public class GoodsPriceService extends Service {
                 while (true){
                     try {
                         //两个小时请求一次
-                        Thread.sleep(1000*60*60*2);
+                        Thread.sleep(7200000);
 
                         //加载商品关注列表
                         goodses.clear();
                         goodses.addAll(goodsBusiness.findFocusGoods(null));
 
-                        //从列表中加载每个商品的价格
-
-                        //如果价格有变动就通知用户
+                        //从列表中加载每个商品的价格，如果价格有变动就通知用户
+                        for (Goods goods : goodses){
+                            goodsBusiness.loadGoodsPrice(goods);
+                        }
                     } catch (InterruptedException e) {
                         GoodsPriceService.this.stopSelf();
                     }

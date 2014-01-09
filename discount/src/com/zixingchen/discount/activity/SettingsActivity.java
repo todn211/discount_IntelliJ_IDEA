@@ -42,13 +42,13 @@ public class SettingsActivity extends Activity {
         SharedPreferences sharedPreferences = this.getSharedPreferences(Contexts.SYSTEM_CACHE, MODE_PRIVATE);
         sharedPreferences.edit().putBoolean(IS_PUSH_INFO,cbPushInfo.isChecked()).commit();
 
-//        //根据开启状态开启或者关注后台商品价格通知服务
-//        Intent intent = new Intent(this,GoodsPriceService.class);
-//        if (cbPushInfo.isChecked()){
-//            this.startService(intent);
-//        }else{
-//            this.stopService(intent);
-//        }
+        //根据开启状态开启或者关注后台商品价格通知服务
+        Intent intent = new Intent(this,GoodsPriceService.class);
+        if (cbPushInfo.isChecked()){
+            this.startService(intent);
+        }else{
+            this.stopService(intent);
+        }
 
 		this.finish();
 	}

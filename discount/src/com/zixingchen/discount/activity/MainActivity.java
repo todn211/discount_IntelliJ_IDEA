@@ -471,10 +471,17 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 			//加载当前价格
 			TextView tvCurrentPrice = (TextView) convertView.findViewById(R.id.tvCurrentPrice);
 			if(goods.getCurrentPrice() == null){
+                tvCurrentPrice.setText("");
+                tvCurrentPrice.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
 				goodsBusiness.loadGoodsPrice(goods, tvCurrentPrice);
 			}else{
+                if (goods.getPriceState() != Goods.PriceState.EQUATION){
+                    Drawable priceStateIcon = convertView.getResources().getDrawable(goods.getPriceStateIcon());
+                    tvCurrentPrice.setCompoundDrawablesWithIntrinsicBounds(null,null,priceStateIcon,null);
+                }else{
+                    tvCurrentPrice.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
+                }
 				tvCurrentPrice.setText("当前价格：" + goods.getCurrentPrice().toString());
-                tvCurrentPrice.setCompoundDrawablesWithIntrinsicBounds(null,null,goods.getPriceStateIcon(),null);
             }
 			
 			//加载当前图标

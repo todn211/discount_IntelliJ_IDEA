@@ -1,7 +1,5 @@
 package com.zixingchen.discount.model;
 
-import android.graphics.drawable.Drawable;
-
 import java.io.Serializable;
 
 /**
@@ -21,7 +19,7 @@ public class Goods implements Serializable{
 	private String icon;//图标
 	private String href;//商品的URL
     private PriceState priceState;//价格状态
-    private Drawable PriceStateIcon;//价格状态图标
+    private Integer priceStateIcon;//价格状态图标
 
     /**
      * 价格状态
@@ -133,11 +131,11 @@ public class Goods implements Serializable{
         this.priceState = priceState;
     }
 
-    public Drawable getPriceStateIcon() {
-        return PriceStateIcon;
+    public Integer getPriceStateIcon() {
+        return priceStateIcon;
     }
 
-    public void setPriceStateIcon(Drawable priceStateIcon) {
-        PriceStateIcon = priceStateIcon;
+    public void setPriceStateIcon(Integer priceStateIcon) {
+        this.priceStateIcon = priceStateIcon;
     }
 }

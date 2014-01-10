@@ -1,6 +1,8 @@
 package com.zixingchen.discount.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -82,7 +84,14 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 		//初始化搜索框
 		this.initEtSearch();
 
-        //这里是本地的修改
+        //进度条调试
+        Dialog progressDialog =  new Dialog(this,R.style.progress_dialog);
+        View v = this.getLayoutInflater().inflate(R.layout.progressbar_dialog,null);// 得到加载view
+        progressDialog.setContentView(v,new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+//        progressDialog.setCancelable(false);
+        progressDialog.show();
 	}
 	
 	/**

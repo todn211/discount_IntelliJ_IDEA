@@ -136,4 +136,15 @@
 	            android:contentDescription="@string/imgContentDescript"/>
        	</RelativeLayout>
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:foreground="@drawable/settings_container"
+        android:clipChildren="true">
+       <ImageView
+           android:layout_height="wrap_content"
+           android:layout_width="wrap_content"
+           android:src="@drawable/test"/>
+    </FrameLayout>
 </LinearLayout>

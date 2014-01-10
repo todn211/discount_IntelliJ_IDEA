@@ -64,7 +64,8 @@ public class GoodsPriceService extends Service {
                             goodsBusiness.loadGoodsPrice(goods);
                         }
                     } catch (InterruptedException e) {
-                        GoodsPriceService.this.stopSelf();
+                        //GoodsPriceService.this.stopSelf();
+                        e.printStackTrace();
                     }
                 }
             }

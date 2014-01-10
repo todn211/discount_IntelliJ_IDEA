@@ -37,6 +37,12 @@
     <style name="corners_input_widget">
         <item name="android:background">@drawable/corners_input_widget</item>
     </style>
+
+    <!-- 自定义loading dialog -->
+    <style name="progress_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/corners_input_widget</item>
+    </style>
     
     <style name="noAnimation">
         <item name="android:activityOpenEnterAnimation">@null</item>

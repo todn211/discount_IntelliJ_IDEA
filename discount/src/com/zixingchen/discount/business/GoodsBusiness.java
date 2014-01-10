@@ -200,7 +200,7 @@ public class GoodsBusiness {
 					httpClient.get(TaobaoUtil.createGoodsItemUrl(goods.getId()), new AsyncHttpResponseHandler(){
 						@Override
 						public void onSuccess(String response) {
-                            updateGoodsCurrentPrice(response, goods);
+                            updateGoodsCurrentPrice(response, goods,true);
 
                             //发布价格修改消息
                             Map<String,Object> params = new HashMap<String, Object>();
@@ -239,7 +239,7 @@ public class GoodsBusiness {
                     httpClient.get(TaobaoUtil.createGoodsItemUrl(goods.getId()), new AsyncHttpResponseHandler(){
                         @Override
                         public void onSuccess(String response) {
-                            boolean hasDiffent = updateGoodsCurrentPrice(response, goods);
+                            boolean hasDiffent = updateGoodsCurrentPrice(response, goods,false);
 
                             //如果价格有变动就通知用户
                             if (hasDiffent){
@@ -262,7 +262,7 @@ public class GoodsBusiness {
      * @param response 网络请求结果
      * @param goods 要修改当前价格的商品对象
      */
-    private boolean updateGoodsCurrentPrice(String response, Goods goods) {
+    private boolean updateGoodsCurrentPrice(String response, Goods goods,boolean updateToDataBase) {
         boolean hasDiffent = false;
         String str = "<strong class=\"oran\">";
         String priceStr = response.substring(response.indexOf(str) + str.length(), response.indexOf("</strong>"));
@@ -277,12 +277,12 @@ public class GoodsBusiness {
         }
 
         if (goods.getPrePrice().floatValue() != price.floatValue()) {
-            Goods newGoods = new Goods(goods.getId());
-            newGoods.setCurrentPrice(price);
-
             //把当前的值作为下一次的参考值
-            goodsDao.updateFocusGoodsPrice(newGoods);
-
+            if (updateToDataBase){
+                Goods newGoods = new Goods(goods.getId());
+                newGoods.setCurrentPrice(price);
+                goodsDao.updateFocusGoodsPrice(newGoods);
+            }
             //设置当前是商品升降价属性
             if (goods.getPrePrice().floatValue() < price.floatValue()) {
                 goods.setPriceState(Goods.PriceState.UP);

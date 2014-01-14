@@ -84,14 +84,15 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 		//初始化搜索框
 		this.initEtSearch();
 
-        //进度条调试
-        Dialog progressDialog =  new Dialog(this,R.style.progress_dialog);
-        View v = this.getLayoutInflater().inflate(R.layout.progressbar_dialog,null);// 得到加载view
-        progressDialog.setContentView(v,new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-//        progressDialog.setCancelable(false);
-        progressDialog.show();
+//        //进度条调试
+//        Dialog progressDialog =  new Dialog(this,R.style.progress_dialog);
+//        View v = this.getLayoutInflater().inflate(R.layout.progressbar_dialog,null);// 得到加载view
+//        View ivLoading = v.findViewById(R.id.ivLoading);
+//        ivLoading.setAnimation(AnimationUtils.loadAnimation(this, R.anim.loading_animation));
+//        progressDialog.setContentView(v,new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.WRAP_CONTENT,
+//                LinearLayout.LayoutParams.WRAP_CONTENT));
+//        progressDialog.show();
 	}
 	
 	/**

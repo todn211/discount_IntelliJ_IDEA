@@ -4,17 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +39,7 @@ public class GoodsListActivity extends Activity implements OnItemClickListener{
 	private GoodsType goodsType;//所属商品类型对象
 	private ListView lvGoodsList;//商品列表
 	private LvGoodsListAdapter adapter;//商品列表数据适配器
+    private Dialog progressDialog;//进度条窗口
 	private GoodsBusiness bussiness = new GoodsBusiness();
 	
 	@Override
@@ -44,6 +48,8 @@ public class GoodsListActivity extends Activity implements OnItemClickListener{
 		setContentView(R.layout.goods_list_activity);
 		
 		Intent intent = this.getIntent();
+
+        popProgreesDialog();
 		
 		//初始化商品类型对象
 		goodsType = (GoodsType) intent.getSerializableExtra("goodsType");
@@ -55,6 +61,21 @@ public class GoodsListActivity extends Activity implements OnItemClickListener{
 		TextView tvTitle = (TextView) this.findViewById(R.id.tvTitle);
 		tvTitle.setText(goodsType.getName());
 	}
+
+    /**
+     * 弹出进度条窗口
+     */
+    private void popProgreesDialog(){
+        //进度条调试
+        progressDialog =  new Dialog(this,R.style.progress_dialog);
+        View view = this.getLayoutInflater().inflate(R.layout.progressbar_dialog,null);// 得到加载view
+        View ivLoading = view.findViewById(R.id.ivLoading);
+        ivLoading.setAnimation(AnimationUtils.loadAnimation(this, R.anim.loading_animation));
+        progressDialog.setContentView(view,new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        progressDialog.show();
+    }
 	
 	/**
 	 * 初始化商品列表
@@ -66,13 +87,13 @@ public class GoodsListActivity extends Activity implements OnItemClickListener{
 		lvGoodsList.setAdapter(adapter);
 		
 		//远程加载商品列表
-		bussiness.loadGoodsByGoodsType(goodsType, new Page<Goods>(),adapter);
+		bussiness.loadGoodsByGoodsType(goodsType, new Page<Goods>(),adapter,progressDialog);
 	}
 	
 	/**
 	 * 关注商品
 	 */
-	public void attentionGoods(View view){
+	public void focusGoods(View view){
 		int location = ((Integer) view.getTag()).intValue();
 		Goods goods = adapter.getDatas().get(location);
 		boolean addResult = bussiness.addFocusGoods(goods);
@@ -199,7 +220,7 @@ public class GoodsListActivity extends Activity implements OnItemClickListener{
 			//判断当前下标是否到达倒数第三个，且判断当前页是不是最后一页，如果不是最后一页就加载下一页的数据
 			if(position == datas.size()-3 && !page.isLastPage()){
 				page.setPageNumber(page.getPageNumber() + 1);
-				bussiness.loadGoodsByGoodsType(goodsType, page,adapter);
+				bussiness.loadGoodsByGoodsType(goodsType, page,adapter,null);
 			}
 			return convertView;
 		}

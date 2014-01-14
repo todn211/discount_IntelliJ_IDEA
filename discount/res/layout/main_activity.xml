@@ -98,6 +98,5 @@
         android:groupIndicator="@drawable/lv_group_arrow"
         android:indicatorLeft="0dp"
         android:background="@drawable/main_bg"
-        android:cacheColorHint="#00000000"
-        />
+        android:cacheColorHint="#00000000"/>
 </LinearLayout>

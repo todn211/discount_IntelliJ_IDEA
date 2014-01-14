@@ -42,7 +42,7 @@
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
             android:focusable="false"
-            android:onClick="attentionGoods"
+            android:onClick="focusGoods"
             android:text="@string/focus" 
             android:drawableLeft="@drawable/add_green_icon"/>
     </LinearLayout>

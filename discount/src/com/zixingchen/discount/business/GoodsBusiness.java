@@ -1,6 +1,7 @@
 package com.zixingchen.discount.business;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -119,7 +120,7 @@ public class GoodsBusiness {
 	 * @param page 分页对象
 	 * @throws Exception
 	 */
-	public void loadGoodsByGoodsType(final GoodsType goodsType,final Page<Goods> page,final LvGoodsListAdapter adapter){
+	public void loadGoodsByGoodsType(final GoodsType goodsType,final Page<Goods> page,final LvGoodsListAdapter adapter,final Dialog progressDialog){
 		new Thread(){
 			public void run() {
 				final List<Goods> goodses = new ArrayList<Goods>();
@@ -164,6 +165,7 @@ public class GoodsBusiness {
 								Map<String,Object> params = new HashMap<String,Object>();
 								params.put("page", page);
 								params.put("adapter", adapter);
+                                params.put("progressDialog",progressDialog);
 
 								Message msg = Message.obtain();
 								msg.what = FIND_GOODS_SUCCESS;
@@ -171,6 +173,7 @@ public class GoodsBusiness {
 								handler.sendMessage(msg);
 							} catch (Exception e) {
 								e.printStackTrace();
+                                progressDialog.dismiss();
 								Message msg = Message.obtain();
 								msg.what = FIND_GOODS_FAILURE;
 								handler.sendMessage(msg);
@@ -382,12 +385,16 @@ public class GoodsBusiness {
 					Map<String,Object> params = (Map<String, Object>) msg.obj;
 					Page<Goods> page = (Page<Goods>)params.get("page");
 					LvGoodsListAdapter adapter = (LvGoodsListAdapter) params.get("adapter");
+                    Dialog progressDialog = (Dialog) params.get("progressDialog");
 					List<Goods> newDatas = page.getDatas();
 					if(newDatas != null && newDatas.size()>0){
 						adapter.getDatas().addAll(newDatas);
 						adapter.setPage(page.clonePageNotDatas());
 						adapter.notifyDataSetChanged();
 					}
+
+                    if(progressDialog != null)
+                        progressDialog.dismiss();
 					break;
 
 				//加载商品列表失败

@@ -72,7 +72,7 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 		goodsTypeBusiness = new GoodsTypeBusiness();
 		goodsBusiness = new GoodsBusiness();
 		
-		//初化//输入法管理者
+		//初化输入法管理者
 		imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		
 		//初始化关注列表 

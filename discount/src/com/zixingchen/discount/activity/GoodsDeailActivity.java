@@ -132,8 +132,13 @@ public class GoodsDeailActivity extends Activity {
 		this.finish();
 		this.overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
 	}
-	
-	/**
+
+    @Override
+    public void onBackPressed() {
+        onBtBackClick(null);
+    }
+
+    /**
 	 * 关注商品
 	 * @param view
 	 */

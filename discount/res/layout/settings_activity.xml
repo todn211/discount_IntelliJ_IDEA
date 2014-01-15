@@ -70,15 +70,15 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"/>
     </RelativeLayout>
-    
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="match_parent"
    		android:layout_height="103dp"
    		android:orientation="vertical"
    		android:layout_margin="10dp"
    		android:padding="1dp"
    		style="@style/settings_container">
-       	
+
         <RelativeLayout
        	    android:layout_width="match_parent"
    			android:layout_height="50dp"
@@ -86,16 +86,16 @@
    			style="@style/settings_item"
 	   		android:clickable="true"
             android:onClick="showContactUsActivity">
-       	    
+
        	    <TextView
-       	        android:id="@+id/tvContactUs"
+       	        android:id="@+id/tvHelp"
 	            android:layout_width="wrap_content"
 	   			android:layout_height="wrap_content"
 	   			android:paddingLeft="10dp"
 	   			android:textStyle="bold"
-	            android:text="@string/contactUs"/>
-       	    
-       	    <ImageView 
+	            android:text="@string/help"/>
+
+       	    <ImageView
        	        android:layout_width="wrap_content"
        	        android:layout_height="wrap_content"
        	        android:src="@drawable/arrow_right"
@@ -104,12 +104,12 @@
 	            android:layout_marginRight="10dp"
 	            android:contentDescription="@string/imgContentDescript"/>
        	</RelativeLayout>
-        
-        <View 
+
+        <View
             android:layout_width="match_parent"
    			android:layout_height="1dp"
    			android:background="#eeffee"/>
-        
+
        	<RelativeLayout
        	    android:layout_width="match_parent"
    			android:layout_height="50dp"
@@ -117,7 +117,7 @@
    			style="@style/settings_item"
 	   		android:clickable="true"
             android:onClick="showAboutActivity">
-       	    
+
        	    <TextView
        	        android:id="@+id/tvAbout"
 	            android:layout_width="wrap_content"
@@ -125,8 +125,8 @@
 	   			android:paddingLeft="10dp"
 	   			android:textStyle="bold"
 	            android:text="@string/about"/>
-       	    
-       	    <ImageView 
+
+       	    <ImageView
        	        android:layout_width="wrap_content"
        	        android:layout_height="wrap_content"
        	        android:src="@drawable/arrow_right"

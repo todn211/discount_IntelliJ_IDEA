@@ -24,6 +24,10 @@
     <string name="search">搜索</string>
     <string name="other">其它</string>
     <string name="inputTheGoodsName">请输入商品名搜索</string>
-    <string name="aboutDescript">　　货比三家的软件可以制作完成，需要感谢帮助过开发这个软件的朋友，特别是梁能奇、陈梓新、陈欢的技术指导和需求的整理，在这表示感谢。</string>
+    <string name="aboutDescript">\t\t《货比三家》原意是为大家提供一个实时监控商品价格走势的软件，在商品的价格下降或者上升时及时通知用户，同时在后期的2.0版本将会提供一个商品在三大网店（淘宝、京东、易讯）的价格对比功能，希望大家在用《货比三家》的时候提出更多的意见，帮助我把这个软件做得更适合你用。谢谢。</string>
+    <string name="help">帮助</string>
+    <string name="contactUsDetail">QQ：52963645 \n E-Mail:52963645@qq.com</string>
+    <string name="version">V1.0 Beta版</string>
+    <string name="introduce">商品简介</string>
 
 </resources>

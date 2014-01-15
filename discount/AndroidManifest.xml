@@ -45,7 +45,7 @@
         <activity android:name="com.zixingchen.discount.activity.AboutActivity"/>
 
         <!-- 联系我们页面 -->
-        <activity android:name=".activity.ContactUsActivity" />
+        <activity android:name=".activity.HelpActivity" />
 
         <!--后台更新关注商品的价格-->
         <service android:name=".service.GoodsPriceService" />

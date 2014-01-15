@@ -1,13 +1,9 @@
 package com.zixingchen.discount.activity;
 
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -67,7 +63,7 @@ public class SettingsActivity extends Activity {
      * @param view
      */
     public void showContactUsActivity(View view){
-        this.startActivity(new Intent(this,ContactUsActivity.class));
+        this.startActivity(new Intent(this,HelpActivity.class));
         this.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
 }

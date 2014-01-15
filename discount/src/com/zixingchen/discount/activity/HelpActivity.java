@@ -9,10 +9,10 @@ import com.zixingchen.discount.R;
 /**
  * Created by XING on 14-1-7.
  */
-public class ContactUsActivity extends Activity {
+public class HelpActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.contact_us_activity);
+        setContentView(R.layout.help_activity);
     }
 
     /**

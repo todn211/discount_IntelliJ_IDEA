@@ -9,7 +9,6 @@
     tools:context=".GoodsDeailActivity" >
 
     <!-- 工具条 -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -82,7 +81,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             style="@style/settings_container"
-            android:text="QQ：52963645\nQQ：2099206\nQQ：26804153\nQQ：315544688\nE-Mail:52963645@qq.com" />
+            android:text="\t\t在开始页面中，按其它按钮->添加，然后选择相关的商品类型进行浏览感兴趣的商品，然后在商品列表中点击关注按钮即可对商品进行关注。也可以通过点击主页的其它按钮->搜索进行商品的搜索，然后在商品列表中点击关注按钮即可对商品进行关注。" />
     </LinearLayout>
 
 </LinearLayout>

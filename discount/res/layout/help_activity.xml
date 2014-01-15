@@ -52,36 +52,42 @@
             android:visibility="invisible"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
-
-        <ImageView
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@drawable/launcher_icon"
-            android:contentDescription="@string/imgContentDescript"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#eeffee"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="15dp"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:drawableTop="@drawable/launcher_icon"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:text="@string/version"/>
 
-        <TextView
-            android:padding="18dp"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#ff9784cb"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            style="@style/settings_container"
-            android:text="\t\t在开始页面中，按其它按钮->添加，然后选择相关的商品类型进行浏览感兴趣的商品，然后在商品列表中点击关注按钮即可对商品进行关注。也可以通过点击主页的其它按钮->搜索进行商品的搜索，然后在商品列表中点击关注按钮即可对商品进行关注。" />
-    </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eeffee"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"/>
 
+            <TextView
+                android:padding="18dp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ff9784cb"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                style="@style/settings_container"
+                android:text="@string/helpDetail" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

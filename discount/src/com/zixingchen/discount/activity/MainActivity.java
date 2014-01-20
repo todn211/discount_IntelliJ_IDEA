@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,6 +16,7 @@ import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -281,17 +283,17 @@ public class MainActivity extends Activity implements OnGroupExpandListener,OnCh
 	 */
 	public void onBtRefreshClick(View view){
 		goodsTypes = goodsTypeBusiness.findFocusGoodsTypes();
-		
+
 		lvMyFocusAdapter adapter = (lvMyFocusAdapter)lvMyFocus.getExpandableListAdapter();
 		adapter.notifyDataSetChanged();
-		
+
 		//重新展开
 		for (int i = 0; i < goodsTypes.size(); i++) {
 			if(lvMyFocus.isGroupExpanded(i)){
 				lvMyFocus.collapseGroup(i);
 			}
 		}
-		
+
 		if(goodsTypes.size() > 0)
 			lvMyFocus.expandGroup(0);
 	}

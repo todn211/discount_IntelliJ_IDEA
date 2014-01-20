@@ -54,6 +54,10 @@ public class DBHelp extends SQLiteOpenHelper {
 			
 			db.beginTransaction();
 			db.execSQL(sql);
+
+            //插入默认关注的商品
+            insertDeafultGoodsFocus(db);
+
 			db.setTransactionSuccessful();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,7 +85,6 @@ public class DBHelp extends SQLiteOpenHelper {
 			values.put("IS_SHOW", GoodsType.NO);
 			db.insert("goods_type", null, values);
 
-			
 			//初始化表数据
 			InputStream in = context.getAssets().open("goodsTpye.json");
 			String goodsTpyeJSONString = StreamUtil.convertStreamToString(in);
@@ -114,6 +117,30 @@ public class DBHelp extends SQLiteOpenHelper {
 			db.endTransaction();
 		}
 	}
+
+    /**
+     * 插入默认关注的商品
+     * @param db
+     */
+    private void insertDeafultGoodsFocus(SQLiteDatabase db){
+        ContentValues values = new ContentValues();
+        values.put("ID", 26527212560L);
+        values.put("GOODS_TYPE_ID",-1);
+        values.put("NAME","全不锈钢电热开水桶奶茶桶加热保温热水桶开水器20L-55L");
+        values.put("PRICE",150.0f);
+        values.put("ICON","http://img01.taobaocdn.com/bao/uploaded/i1/T1DcY6FipgXXXXXXXX_!!0-item_pic.jpg_sum.jpg");
+        values.put("HREF","http://item.taobao.com/item.htm?id=26527212560");
+        db.insert("focus_goods", null, values);
+
+        ContentValues values2 = new ContentValues();
+        values2.put("ID", 36355543415L);
+        values2.put("GOODS_TYPE_ID",-1);
+        values2.put("NAME","红乐正品 煎蛋羹蒸蛋器煮蛋机小家电厨房电器煮鸡蛋");
+        values2.put("PRICE",108.0f);
+        values2.put("ICON","http://img04.taobaocdn.com/bao/uploaded/i4/15409043754988469/T1AUD9FnlaXXXXXXXX_!!0-item_pic.jpg_sum.jpg");
+        values2.put("HREF","http://item.taobao.com/item.htm?id=36355543415");
+        db.insert("focus_goods", null, values2);
+    }
 
 	/**
 	 * 插入商品类型数据

@@ -1,15 +1,11 @@
 package com.zixingchen.discount.widgetex.ExpandableListViewSuper;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.*;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.zixingchen.discount.R;
@@ -28,6 +24,7 @@ public class MyFocusGoodsItemLoyout extends RelativeLayout {
 	private int btDeleteWidth;//删除按键的宽度
 	private int groupPosition;//分组位置
 	private int childPosition;//组下面元素子位置
+    private ImageView dragItem;
 
 	public MyFocusGoodsItemLoyout(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -79,7 +76,19 @@ public class MyFocusGoodsItemLoyout extends RelativeLayout {
 					if(moveTarget.getLeft() != -btDeleteWidth){
 						resetViewPosition();
 					}
+
+                    //删除WindowManager
+                    if (dragItem != null){
+                        WindowManager wm = (WindowManager)MyFocusGoodsItemLoyout.this.getContext().getSystemService(Context.WINDOW_SERVICE);
+                        wm.removeView(dragItem);
+                        dragItem = null;
+                    }
 				}
+
+                if (MotionEvent.ACTION_MOVE == event.getAction()){
+                    WindowManager wm = (WindowManager)MyFocusGoodsItemLoyout.this.getContext().getSystemService(Context.WINDOW_SERVICE);
+//                    wm.
+                }
 				return gestureDetector.onTouchEvent(event);
 			}
 		});
@@ -104,13 +113,34 @@ public class MyFocusGoodsItemLoyout extends RelativeLayout {
 	/**
 	 * 手势识别对象
 	 */
-	@SuppressLint("NewApi")
 	private class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+
 		public MyGestureListener() {
 			moveTarget = (ViewGroup) MyFocusGoodsItemLoyout.this.getChildAt(1);
 		}
-		
-		/**
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+            super.onLongPress(e);
+
+            MyFocusGoodsItemLoyout.this.setDrawingCacheEnabled(true);
+            dragItem = new ImageView(MyFocusGoodsItemLoyout.this.getContext());
+            dragItem.setImageBitmap(MyFocusGoodsItemLoyout.this.getDrawingCache());
+            WindowManager wm = (WindowManager)MyFocusGoodsItemLoyout.this.getContext().getSystemService(Context.WINDOW_SERVICE);
+            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+//            layoutParams.format = PixelFormat.RGBA_8888; // 设置图片格式，效果为背景透明
+//            layoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
+            layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                    | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                    | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+            layoutParams.gravity = Gravity.LEFT | Gravity.TOP;
+            layoutParams.y = (int)(e.getRawY()-MyFocusGoodsItemLoyout.this.getMeasuredHeight()/2);
+            wm.addView(dragItem,layoutParams);
+        }
+
+        /**
 		 * 按下事件，在ExpandableListViewSuper中记录当前对象，以便在向上、下滚动时如果当前位置有变动则复位
 		 */
 		@Override
